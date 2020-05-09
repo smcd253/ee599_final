@@ -1,7 +1,10 @@
-let eval = 100;
+let eval = process.argv[2];
 
 let memo = {};
+let memo_usage_map = {};
 function fib_memo(n) {
+    if(n in memo_usage_map) memo_usage_map[n]++;
+    else memo_usage_map[n] = 1;
     if (n == 0 || n == 1) {
         return 1;
     }
@@ -14,7 +17,12 @@ function fib_memo(n) {
     return memo[n];
 }
 
+// with usage map
+let usage_map = {};
+
 function fib_reg(n) {
+    if(n in usage_map) usage_map[n]++;
+    else usage_map[n] = 1;
     if (n == 0 || n == 1) {
         return 1;
     }
@@ -23,4 +31,8 @@ function fib_reg(n) {
 }
 
 console.log(`fib_reg of ${eval} = ${fib_reg(eval)}`);
+console.log('usage_map = ');
+console.log(usage_map);
 console.log(`fib_memo of ${eval} = ${fib_memo(eval)}`);
+console.log('memo_usage_map = ');
+console.log(memo_usage_map);
