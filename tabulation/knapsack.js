@@ -26,3 +26,4 @@ i++;
 for(i; i < items.length; i++) {
     if(f_iw[i-1] + items[i].weight); 
 }    
+
